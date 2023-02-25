@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
 import setList from "../data/set-list.json";
 import Link from "next/link";
 
@@ -29,19 +28,25 @@ export default function Home() {
           }}
         >
           {setList.map((card, index) => (
-            <div
-              key={index}
-              style={{
-                marginRight: "8px",
-                marginBottom: "8px",
-                background: "black",
-                padding: "10px",
-                borderRadius: "10px",
-                height: "305px",
-              }}
-            >
-              <Image src={card.image} height={285} width={200} />
-            </div>
+            <Link href={`/${card.number}`} key={index}>
+              <div
+                style={{
+                  marginRight: "8px",
+                  marginBottom: "8px",
+                  background: "black",
+                  padding: "10px",
+                  borderRadius: "10px",
+                  height: "305px",
+                }}
+              >
+                <Image
+                  src={card.image}
+                  height={285}
+                  width={200}
+                  alt={card.name}
+                />
+              </div>
+            </Link>
           ))}
         </div>
       </main>

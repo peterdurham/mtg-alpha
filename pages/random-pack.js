@@ -53,7 +53,12 @@ const RandomPack = () => {
               }}
             >
               {card?.image && (
-                <Image src={card.image} height={285} width={200} />
+                <Image
+                  src={card.image}
+                  height={285}
+                  width={200}
+                  alt={card.name}
+                />
               )}
             </div>
           );
