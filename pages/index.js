@@ -5,8 +5,6 @@ import styles from "@/styles/Home.module.css";
 import setList from "../data/set-list.json";
 import Link from "next/link";
 
-console.log("setList", setList);
-
 export default function Home() {
   return (
     <>

@@ -6,10 +6,6 @@ const rares = setList.filter((card) => card.rarity === "R"); // 113
 const uncommons = setList.filter((card) => card.rarity === "U"); // 94
 const commons = setList.filter((card) => card.rarity === "C"); // 83
 
-console.log("rares", rares);
-console.log("uncommons", uncommons);
-console.log("commons", commons);
-
 const RandomPack = () => {
   const [contents, setContents] = useState([]);
 
@@ -23,7 +19,6 @@ const RandomPack = () => {
     const rareOpened = Array.from({ length: 1 }, () =>
       Math.floor(Math.random() * 113)
     ).map((index) => rares[index]);
-    console.log("rareOpened", rareOpened);
 
     const packContents = []
       .concat(commonsOpened)
@@ -31,7 +26,6 @@ const RandomPack = () => {
       .concat(rareOpened);
 
     setContents(packContents);
-    console.log("packContents", packContents);
   }, []);
 
   return (
