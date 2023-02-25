@@ -30,8 +30,9 @@ export default function Home() {
             flexWrap: "wrap",
           }}
         >
-          {setList.map((card) => (
+          {setList.map((card, index) => (
             <div
+              key={index}
               style={{
                 marginRight: "8px",
                 marginBottom: "8px",

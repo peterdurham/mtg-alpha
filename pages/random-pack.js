@@ -45,9 +45,10 @@ const RandomPack = () => {
           flexWrap: "wrap",
         }}
       >
-        {contents.map((card) => {
+        {contents.map((card, index) => {
           return (
             <div
+              key={index}
               style={{
                 marginRight: "8px",
                 marginBottom: "8px",
