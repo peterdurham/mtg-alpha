@@ -5,7 +5,8 @@ import setList from "../data/set-list.json";
 export default function Page({ card }) {
   return (
     <>
-      <Head>
+      <h1>Page</h1>
+      {/* <Head>
         <title>{card.name}</title>
       </Head>
       <h1>
@@ -22,7 +23,7 @@ export default function Page({ card }) {
         }}
       >
         <Image src={card.image} height={285} width={200} alt={card.name} />
-      </div>
+      </div> */}
     </>
   );
 }
