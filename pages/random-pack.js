@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import setList from "../data/set-list.json";
 import Image from "next/image";
-import CardStack from "./card-stack";
+import CardStack from "../components/card-stack";
 
 const rares = setList.filter((card) => card.rarity === "R"); // 113
 const uncommons = setList.filter((card) => card.rarity === "U"); // 94
@@ -33,7 +33,7 @@ const RandomPack = () => {
   return (
     <div>
       <h1>Random Pack</h1>
-      {contents.length && <CardStack contents={contents} />}
+      {/* {contents.length && <CardStack contents={contents} />} */}
       <div
         style={{
           width: "1140px",
