@@ -29,10 +29,11 @@ const RandomPack = () => {
     setContents(packContents);
   }, []);
   console.log("random pack contents", contents);
+
   return (
     <div>
       <h1>Random Pack</h1>
-      <CardStack contents={contents} />
+      {contents.length && <CardStack contents={contents} />}
       <div
         style={{
           width: "1140px",

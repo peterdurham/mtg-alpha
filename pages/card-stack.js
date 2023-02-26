@@ -58,8 +58,6 @@ function Deck({ contents }) {
     console.log("clicked");
   }
 
-  if (!props.length) return <div>loading</div>;
-
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return (
     <>
