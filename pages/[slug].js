@@ -3,10 +3,16 @@ import Image from "next/image";
 import setList from "../data/set-list.json";
 
 export default function Page({ card }) {
+  console.log("card", card);
+
+  if (!card) {
+    return <div>404</div>;
+  }
+
   return (
     <>
       <h1>Page</h1>
-      {/* <Head>
+      <Head>
         <title>{card.name}</title>
       </Head>
       <h1>
@@ -23,7 +29,7 @@ export default function Page({ card }) {
         }}
       >
         <Image src={card.image} height={285} width={200} alt={card.name} />
-      </div> */}
+      </div>
     </>
   );
 }
@@ -37,5 +43,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const card = setList.find((card) => card.number === params.slug);
+  if (!card) {
+    return {
+      notFound: true,
+    };
+  }
+
   return { props: { card } };
 }
