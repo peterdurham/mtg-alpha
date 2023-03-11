@@ -15,48 +15,36 @@ export default function Home() {
       </Head>
       <main>
         <h1>MTG ALPHA</h1>
-        <div style={{ textAlign: "center", marginBottom: "30px" }}>
-          <Link href="/random-pack">Open Random Pack</Link>
-        </div>
 
         <div
           style={{
-            width: "700px",
+            textAlign: "center",
             margin: "0 auto",
+            width: "700px",
             display: "flex",
             flexWrap: "wrap",
           }}
         >
-          {setList.map((card, index) => (
-            <Link
-              href={`/${card.number}`}
-              key={index}
-              style={{
-                borderTop:
-                  index % 9 === 0 && index !== 0 ? "2px solid red" : "none",
-              }}
-            >
-              <div
-                style={{
-                  marginRight: "8px",
-                  marginBottom: "8px",
-                  background: "black",
-                  padding: "10px",
-                  borderRadius: "14px",
-                  height: "305px",
-                }}
-              >
-                <Image
-                  src={card.image}
-                  height={285}
-                  width={200}
-                  alt={card.name}
-                />
-              </div>
-            </Link>
-          ))}
+          <HomeSection name="Card Images" href="/cards" />
+          <HomeSection name="Card List" href="/cards" />
+          <HomeSection name="About Alpha" href="/cards" />
+          <HomeSection name="Alpha Print Runs" href="/cards" />
+          <HomeSection name="Open Booster Pack" href="/random-pack" />
+          <HomeSection name="Open Starter Deck" href="/cards" />
         </div>
       </main>
     </>
   );
 }
+
+const HomeSection = ({ name, href }) => {
+  return (
+    <Link href={href}>
+      <div
+        style={{ width: "350px", height: "200px", border: "1px solid black" }}
+      >
+        {name}
+      </div>
+    </Link>
+  );
+};
