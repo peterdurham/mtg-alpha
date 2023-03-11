@@ -28,14 +28,21 @@ export default function Home() {
           }}
         >
           {setList.map((card, index) => (
-            <Link href={`/${card.number}`} key={index}>
+            <Link
+              href={`/${card.number}`}
+              key={index}
+              style={{
+                borderTop:
+                  index % 9 === 0 && index !== 0 ? "2px solid red" : "none",
+              }}
+            >
               <div
                 style={{
                   marginRight: "8px",
                   marginBottom: "8px",
                   background: "black",
                   padding: "10px",
-                  borderRadius: "10px",
+                  borderRadius: "14px",
                   height: "305px",
                 }}
               >

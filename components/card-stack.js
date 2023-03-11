@@ -7,9 +7,10 @@ import styles from "styles/CardStack.module.css";
 // These two are just helpers, they curate spring data, values that are later being interpolated into css
 const to = (i) => ({
   x: 0,
-  y: i * -4,
+  y: i * -1.5,
   scale: 1,
-  rot: -10 + Math.random() * 20,
+  // rot: -10 + Math.random() * 20,
+  rot: 0,
   delay: i * 10,
 });
 const from = (_i) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
@@ -20,7 +21,8 @@ const trans = (r, s) =>
   }deg) rotateZ(${r}deg) scale(${s})`;
 
 function Deck({ contents }) {
-  const cards = contents.map((item) => item.image).reverse();
+  const [clicked, setClicked] = useState(false);
+  const cards = contents.map((item) => item.image);
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
   const [props, api] = useSprings(cards.length, (i) => ({
     ...to(i),
@@ -35,6 +37,7 @@ function Deck({ contents }) {
       api.start((i) => {
         if (index !== i) return; // We're only interested in changing spring-data for the current spring
         const isGone = gone.has(index);
+        console.log(isGone, isGone);
         const x = isGone ? (200 + window.innerWidth) * dir : down ? mx : 0; // When a card is gone it flys out left or right, otherwise goes back to zero
         const rot = mx / 100 + (isGone ? dir * 10 * velocity : 0); // How much the card tilts, flicking it harder makes it rotate faster
         const scale = down ? 1.1 : 1; // Active cards lift up a bit
@@ -54,8 +57,26 @@ function Deck({ contents }) {
     }
   );
 
-  function handleClick() {
-    console.log("clicked");
+  function handleClick(e) {
+    if (e.detail === 2) {
+      console.log("double click");
+      setClicked(true);
+      setTimeout(() => {
+        setClicked(false);
+      }, 600);
+    }
+
+    // switch (e.detail) {
+    //   case 1:
+    //     console.log("click");
+    //     break;
+    //   case 2:
+    //     console.log("double click");
+    //     break;
+    //   case 3:
+    //     console.log("triple click");
+    //     break;
+    // }
   }
 
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)

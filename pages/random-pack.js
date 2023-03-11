@@ -33,7 +33,7 @@ const RandomPack = () => {
   return (
     <div>
       <h1>Random Pack</h1>
-      {/* {contents.length && <CardStack contents={contents} />} */}
+      {contents.length && <CardStack contents={contents} />}
       <div
         style={{
           width: "1140px",
@@ -51,7 +51,7 @@ const RandomPack = () => {
                 marginBottom: "8px",
                 background: "black",
                 padding: "10px",
-                borderRadius: "10px",
+                borderRadius: "14px",
                 height: "305px",
               }}
             >
